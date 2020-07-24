@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Snacks</h1>
+<style>
+    body {
+    background-position: 50%;
+       background-size cover;
+    background-image: url('https://cdn.pixabay.com/photo/2015/03/02/11/53/chocolate-655875_1280.jpg');
+    }
+</style>
+    <div class="row">
+        {% for snack in snacks %}
+            <div class="col">
+            <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+                <img src="{{ snack.image_url }}" class="card-img-top" alt="..." style="width:271x;height:180px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ snack.name }}</h5>
+                    <p class="card-text">Ksh.{{ snack.price }}</p>
+                    <a href="#" class="btn btn-dark">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

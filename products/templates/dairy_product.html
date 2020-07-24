@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Dairy Product</h1>
+<style>
+    body {
+    background-position: 50%;
+       background-size cover;
+    background-image: url('https://cdn.pixabay.com/photo/2020/01/10/15/42/milk-4755533_1280.jpg');
+    }
+</style>
+    <div class="row">
+        {% for dairy_product in dairy_products %}
+            <div class="col">
+            <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+                <img src="{{ dairy_product.image_url }}" class="card-img-top" alt="..." style="width:271x;height:180px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ dairy_product.name }}</h5>
+                    <p class="card-text">Ksh. {{ dairy_product.price }}</p>
+                    <a href="#" class="btn btn-dark">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

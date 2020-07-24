@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% include 'messages.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Create an Account
+{% endblock %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<style>
+    body {
+  background-image: url('https://c0.wallpaperflare.com/preview/262/540/1004/amsterdam-netherlands-city-cityscape.jpg');
+    }
+</style>
+<body>
+<h1 style="color:white">Registration Page</h1>
+<form method="POST" class="form-group">
+    {% csrf_token %}
+    <div class="container">
+            <div class="row">
+                <div class="col-sm-3 offset-sm-3">
+                       {{ form|crispy }}
+                    <button type="submit" class="btn btn-dark">REGISTER</button>
+                </div>
+            </div>
+        </div>
+</form>
+</body>
+{% endblock %}
+
+

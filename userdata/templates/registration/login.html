@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login Page
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+    body {
+  background-image: url('https://cdn.pixabay.com/photo/2017/07/08/19/55/plate-2485476_1280.jpg');
+    }
+</style>
+<h1 style="color:white">Login Page</h1>
+<form action="login" method="post" class="form-group">
+    {% csrf_token %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 offset-sm-3">
+                {{ form|crispy }}
+                <p style="color:white">Don't have an account? Create one <a href="/register">here</a></p>
+                <button type="submit" class="btn btn-dark">LOGIN</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var form_fields = document.getElementByTagName('input')
+        form_fields[1].placeholder = 'Username...';
+        form_fields[2].placeholder = 'Password...';
+
+        for (var field in form_fields){
+            form_fields[field].classroom += 'form-control'
+        }
+
+    </script>
+</form>
+{% endblock %}

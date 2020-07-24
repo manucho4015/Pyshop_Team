@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Soft Drinks</h1>
+<style>
+    body {
+    background-position: 50%;
+       background-size cover;
+    background-image: url('https://p1.pxfuel.com/preview/49/647/715/old-rustic-jar-glass-lid-black.jpg');
+    }
+</style>
+    <div class="row">
+        {% for soft_drink in soft_drinks %}
+            <div class="col">
+            <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+                <img src="{{ soft_drink.image_url }}" class="card-img-top" alt="..." style="width:271x;height:180px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ soft_drink.name }}</h5>
+                    <p class="card-text">Ksh. {{ soft_drink.price }}</p>
+                    <a href="#" class="btn btn-dark">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1></h1>
+<style>
+    body {
+    background-position: 50%;
+    background-size cover;
+    background-image: url('https://p0.piqsels.com/preview/789/103/776/budapest-hungary-fruit-and-veg-reflection-thumbnail.jpg');
+    }
+</style>
+    <div class="row">
+        {% for product in all_products %}
+            <div class="col">
+            <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+                <img src="{{ product.image_url }}" class="card-img-top" alt="..." style="width:271x;height:180px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <span class="badge badge-pill {{ product.get_label_display }}-color">organic</span>
+                    <p class="card-text">Ksh.{{ product.price }}</p>
+                    <a href="{% url 'update_cart' product.slug %}" class="btn btn-dark">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

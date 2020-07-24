@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Fruits And Vegetables</h1>
+<style>
+    body {
+    background-position: 50%;
+       background-size cover;
+    background-image: url('https://svgsilh.com/svg/2026279.svg');
+    }
+</style>
+    <div class="row">
+        {% for fruit_and_vegetable in fruits_and_vegetables %}
+            <div class="col">
+            <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+                <img src="{{ fruit_and_vegetable.image_url }}" class="card-img-top" alt="..." style="width:271x;height:180px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ fruit_and_vegetable.name }}</h5>
+                    <p class="card-text">Ksh. {{ fruit_and_vegetable.price }}</p>
+                    <a href="#" class="btn btn-dark">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

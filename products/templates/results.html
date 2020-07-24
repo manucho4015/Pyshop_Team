@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1 style="color:white">Searched for: {{ search }}</h1>
+<style>
+    body {
+    background-position: 50%;
+    background-size cover;
+    background-image: url('https://p0.pikrepo.com/preview/433/748/white-love-text-on-black-background.jpg');
+    }
+</style>
+    <div class="row">
+        {% for product in products %}
+            <div class="col">
+            <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+                <img src="{{ product.image_url }}" class="card-img-top" alt="..." style="width:271x;height:180px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">Ksh.{{ product.price }}</p>
+                    <a href="#" class="btn btn-dark">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

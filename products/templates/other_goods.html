@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Other Goods</h1>
+<style>
+    body {
+    background-position: 50%;
+       background-size cover;
+    background-image: url('https://images.pexels.com/photos/1154265/pexels-photo-1154265.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    }
+</style>
+    <div class="row">
+        {% for other_good in other_goods %}
+            <div class="col">
+            <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+                <img src="{{ other_good.image_url }}" class="card-img-top" alt="..." style="width:271x;height:180px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ other_good.name }}</h5>
+                    <p class="card-text">Ksh. {{ other_good.price }}</p>
+                    <a href="#" class="btn btn-dark">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

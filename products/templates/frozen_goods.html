@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Frozen Goods</h1>
+<style>
+    body {
+    background-position: 50%;
+    background-size cover;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Chitterlings_%28frozen_food%29-01.jpg/675px-Chitterlings_%28frozen_food%29-01.jpg');
+    }
+</style>
+    <div class="row">
+        {% for frozen_good in frozen_goods %}
+            <div class="col">
+            <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
+                <img src="{{ frozen_good.image_url }}" class="card-img-top" alt="..." style="width:271x;height:180px;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ frozen_good.name }}</h5>
+                    <p class="card-text">Ksh. {{ frozen_good.price }}</p>
+                    <a href="#" class="btn btn-dark">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+
