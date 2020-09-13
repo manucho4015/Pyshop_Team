@@ -4,13 +4,14 @@ from django.db import models
 from django.urls import reverse
 
 CATEGORY_CHOICES = (
-    ('FW', 'Fruits and Vegetables'),
+    ('FV', 'Fruits and Vegetables'),
     ('P', 'Pastry'),
     ('S', 'Snack'),
     ('RM', 'Ready Meal'),
     ('DP', 'Dairy Product'),
     ('SD', 'Soft Drink'),
-    ('FG', 'Frozen Good')
+    ('FG', 'Frozen Good'),
+    ('OG', 'Other Good')
 )
 
 LABEL_CHOICES = (
@@ -52,57 +53,97 @@ class Offer(models.Model):
     discount = models.FloatField()
 
 
-class FruitsAndVegetable(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.FloatField()
-    stock = models.IntegerField(default=0)
-    image_url = models.CharField(max_length=2083)
+class FruitsAndVegetableManager(models.Manager):
+    def get_queryset(self):
+        return super(FruitsAndVegetableManager, self).get_queryset().filter(category='FV')
 
 
-class Pastrie(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.FloatField()
-    stock = models.IntegerField(default=0)
-    image_url = models.CharField(max_length=2083)
+class FruitsAndVegetable(Product):
+    objects = FruitsAndVegetableManager()
+
+    class Meta:
+        proxy = True
 
 
-class Snack(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.FloatField()
-    stock = models.IntegerField(default=0)
-    image_url = models.CharField(max_length=2083)
+class PastrieManager(models.Manager):
+    def get_queryset(self):
+        return super(PastrieManager, self).get_queryset().filter(category='P')
 
 
-class ReadyMeal(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.FloatField()
-    stock = models.IntegerField(default=0)
-    image_url = models.CharField(max_length=2083)
+class Pastrie(Product):
+    objects = PastrieManager()
+
+    class Meta:
+        proxy = True
 
 
-class DairyProduct(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.FloatField()
-    stock = models.IntegerField(default=0)
-    image_url = models.CharField(max_length=2083)
+class SnackManager(models.Manager):
+    def get_queryset(self):
+        return super(SnackManager, self).get_queryset().filter(category='S')
 
 
-class SoftDrink(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.FloatField()
-    stock = models.IntegerField(default=0)
-    image_url = models.CharField(max_length=2083)
+class Snack(Product):
+    objects = SnackManager()
+
+    class Meta:
+        proxy = True
 
 
-class Frozen(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.FloatField()
-    stock = models.IntegerField(default=0)
-    image_url = models.CharField(max_length=2083)
+class ReadyMealManager(models.Manager):
+    def get_queryset(self):
+        return super(ReadyMealManager, self).get_queryset().filter(category='RM')
 
 
-class Other(models.Model):
-    name = models.CharField(max_length=255)
-    price = models.FloatField()
-    stock = models.IntegerField(default=0)
-    image_url = models.CharField(max_length=2083)
+class ReadyMeal(Product):
+    objects = ReadyMealManager()
+
+    class Meta:
+        proxy = True
+
+
+class DairyProductManager(models.Manager):
+    def get_queryset(self):
+        return super(DairyProductManager, self).get_queryset().filter(category='DP')
+
+
+class DairyProduct(Product):
+    objects = DairyProductManager()
+
+    class Meta:
+        proxy = True
+
+
+class SoftDrinkManager(models.Manager):
+    def get_queryset(self):
+        return super(SoftDrinkManager, self).get_queryset().filter(category='SD')
+
+
+class SoftDrink(Product):
+    objects = SoftDrinkManager()
+
+    class Meta:
+        proxy = True
+
+
+class FrozenManager(models.Manager):
+    def get_queryset(self):
+        return super(FrozenManager, self).get_queryset().filter(category='FG')
+
+
+class Frozen(Product):
+    objects = FrozenManager()
+
+    class Meta:
+        proxy = True
+
+
+class OtherManager(models.Manager):
+    def get_queryset(self):
+        return super(OtherManager, self).get_queryset().filter(category='OG')
+
+
+class Other(Product):
+    objects = OtherManager()
+
+    class Meta:
+        proxy = True

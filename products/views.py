@@ -21,10 +21,7 @@ def search(request):
 
 
 def index(request):
-    all_products = Product.objects.all(), \
-                   FruitsAndVegetable.objects.all(), Pastrie.objects.all(), Snack.objects.all(), \
-                   Pastrie.objects.all(), ReadyMeal.objects.all(), DairyProduct.objects.all(), \
-                   SoftDrink.objects.all(), Frozen.objects.all(), Other.objects.all()
+    all_products = Product.objects.all()
     return redirect(reverse('index.html',
                             kwargs={'all_products': all_products}))
 
