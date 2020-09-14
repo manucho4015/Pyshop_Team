@@ -5,7 +5,7 @@
 <style>
     body {
     background-position: 50%;
-    background-size cover;
+       background-size cover;
     background-image: url('https://publicdomainvectors.org/photos/lotsoffoodonatable.png');
     }
 </style>
@@ -15,7 +15,9 @@
             <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
                 <img src="{{ ready_meal.image_url }}" class="card-img-top" alt="..." style="width:271x;height:180px;">
                 <div class="card-body">
-                    <h5 class="card-title">{{ ready_meal.name }}</h5>
+                    <h5 class="card-title">{{ ready_meal.name }}
+                    <span class="badge badge-pill badge-{{ ready_meal.get_label_display }}">{{ ready_meal.category }}</span>
+                    </h5>
                     <p class="card-text">Ksh. {{ ready_meal.price }}</p>
                     <a href="#" class="btn btn-dark">Add to Cart</a>
                 </div>
@@ -24,4 +26,5 @@
         {% endfor %}
     </div>
 {% endblock %}
+
 

@@ -15,7 +15,9 @@
             <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
                 <img src="{{ dairy_product.image_url }}" class="card-img-top" alt="..." style="width:271x;height:180px;">
                 <div class="card-body">
-                    <h5 class="card-title">{{ dairy_product.name }}</h5>
+                    <h5 class="card-title">{{ dairy_product.name }}
+                        <span class="badge badge-pill badge-{{ dairy_product.get_label_display }}">{{ dairy_product.category }}</span>
+                    </h5>
                     <p class="card-text">Ksh. {{ dairy_product.price }}</p>
                     <a href="#" class="btn btn-dark">Add to Cart</a>
                 </div>

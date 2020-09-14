@@ -4,20 +4,23 @@ from django.db import models
 from django.urls import reverse
 
 CATEGORY_CHOICES = (
-    ('FV', 'Fruits and Vegetables'),
-    ('P', 'Pastry'),
-    ('S', 'Snack'),
-    ('RM', 'Ready Meal'),
-    ('DP', 'Dairy Product'),
-    ('SD', 'Soft Drink'),
-    ('FG', 'Frozen Good'),
-    ('OG', 'Other Good')
+    ('healthy', 'Fruits and Vegetables'),
+    ('desert', 'Pastry'),
+    ('nibble', 'Snack'),
+    ('hot', 'Ready Meal'),
+    ('dairy', 'Dairy Product'),
+    ('pop', 'Soft Drink'),
+    ('chilled', 'Frozen Good'),
+    ('additional', 'Other Good')
 )
 
 LABEL_CHOICES = (
     ('P', 'primary'),
-    ('S', 'secondary'),
-    ('D', 'danger')
+    ('S', 'success'),
+    ('D', 'danger'),
+    ('W', 'warning'),
+    ('I', 'info'),
+    ('L', 'light')
 )
 
 
@@ -26,7 +29,7 @@ class Product(models.Model):
     price = models.FloatField()
     stock = models.IntegerField()
     image_url = models.CharField(max_length=2083)
-    category = models.CharField(choices=CATEGORY_CHOICES, max_length=2)
+    category = models.CharField(choices=CATEGORY_CHOICES, max_length=10)
     label = models.CharField(choices=LABEL_CHOICES, max_length=1)
 
     slug = models.SlugField(unique=True)
@@ -55,7 +58,7 @@ class Offer(models.Model):
 
 class FruitsAndVegetableManager(models.Manager):
     def get_queryset(self):
-        return super(FruitsAndVegetableManager, self).get_queryset().filter(category='FV')
+        return super(FruitsAndVegetableManager, self).get_queryset().filter(category='healthy')
 
 
 class FruitsAndVegetable(Product):
@@ -67,7 +70,7 @@ class FruitsAndVegetable(Product):
 
 class PastrieManager(models.Manager):
     def get_queryset(self):
-        return super(PastrieManager, self).get_queryset().filter(category='P')
+        return super(PastrieManager, self).get_queryset().filter(category='desert')
 
 
 class Pastrie(Product):
@@ -79,7 +82,7 @@ class Pastrie(Product):
 
 class SnackManager(models.Manager):
     def get_queryset(self):
-        return super(SnackManager, self).get_queryset().filter(category='S')
+        return super(SnackManager, self).get_queryset().filter(category='nibble')
 
 
 class Snack(Product):
@@ -91,7 +94,7 @@ class Snack(Product):
 
 class ReadyMealManager(models.Manager):
     def get_queryset(self):
-        return super(ReadyMealManager, self).get_queryset().filter(category='RM')
+        return super(ReadyMealManager, self).get_queryset().filter(category='hot')
 
 
 class ReadyMeal(Product):
@@ -103,7 +106,7 @@ class ReadyMeal(Product):
 
 class DairyProductManager(models.Manager):
     def get_queryset(self):
-        return super(DairyProductManager, self).get_queryset().filter(category='DP')
+        return super(DairyProductManager, self).get_queryset().filter(category='dairy')
 
 
 class DairyProduct(Product):
@@ -115,7 +118,7 @@ class DairyProduct(Product):
 
 class SoftDrinkManager(models.Manager):
     def get_queryset(self):
-        return super(SoftDrinkManager, self).get_queryset().filter(category='SD')
+        return super(SoftDrinkManager, self).get_queryset().filter(category='pop')
 
 
 class SoftDrink(Product):
@@ -127,7 +130,7 @@ class SoftDrink(Product):
 
 class FrozenManager(models.Manager):
     def get_queryset(self):
-        return super(FrozenManager, self).get_queryset().filter(category='FG')
+        return super(FrozenManager, self).get_queryset().filter(category='chilled')
 
 
 class Frozen(Product):
@@ -139,7 +142,7 @@ class Frozen(Product):
 
 class OtherManager(models.Manager):
     def get_queryset(self):
-        return super(OtherManager, self).get_queryset().filter(category='OG')
+        return super(OtherManager, self).get_queryset().filter(category='additional')
 
 
 class Other(Product):

@@ -21,9 +21,8 @@ def search(request):
 
 
 def index(request):
-    all_products = Product.objects.all()
-    return redirect(reverse('index.html',
-                            kwargs={'all_products': all_products}))
+    products = Product.objects.all()
+    return render(request, 'index.html', {'products': products})
 
 
 def fruits_and_vegetable(request):

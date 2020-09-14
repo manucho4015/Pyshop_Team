@@ -15,7 +15,9 @@
             <div class="card text-white bg-secondary mb-3" style="width: 18rem;">
                 <img src="{{ snack.image_url }}" class="card-img-top" alt="..." style="width:271x;height:180px;">
                 <div class="card-body">
-                    <h5 class="card-title">{{ snack.name }}</h5>
+                    <h5 class="card-title">{{ snack.name }}
+                    <span class="badge badge-pill badge-{{ snack.get_label_display }}">{{ snack.category }}</span>
+                    </h5>
                     <p class="card-text">Ksh.{{ snack.price }}</p>
                     <a href="#" class="btn btn-dark">Add to Cart</a>
                 </div>
