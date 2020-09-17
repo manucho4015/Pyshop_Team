@@ -10,5 +10,5 @@ urlpatterns = [
     path('dairy_products', views.dairy_product),
     path('soft_drinks', views.soft_drink),
     path('frozen_goods', views.frozen),
-    path('other_goods', views.other)
+    path('other_goods', views.other),
 ]

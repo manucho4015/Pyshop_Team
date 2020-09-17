@@ -18,7 +18,11 @@
                         <span class="badge badge-pill badge-{{ product.get_label_display }}">{{ product.category }}</span>
                     </h5>
                     <p class="card-text">Ksh.{{ product.price }}</p>
-                    <a href="{% url 'update_cart' product.slug %}" class="btn btn-dark">Add to Cart</a>
+                    <form class="form" method="GET" action="{% url 'update_cart' product.slug %}">
+                        <input class="form-control" name="qty" type="number" value="1"/>
+                        <input class="btn btn-dark" type="submit" value="Add to Cart"/>
+                    </form>
+<!--                    <a href="{% url 'update_cart' product.slug %}?qty=12" class="btn btn-dark">Add to Cart</a>-->
                 </div>
             </div>
         </div>

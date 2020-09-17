@@ -1,5 +1,3 @@
-from django.conf import settings
-import uuid
 from django.db import models
 from django.urls import reverse
 
@@ -38,7 +36,7 @@ class Product(models.Model):
     active = models.BooleanField(default=True)
 
     def __unicode__(self):
-        return self.name
+        return str(self.name)
 
     class Meta:
         unique_together = ('name', 'slug')

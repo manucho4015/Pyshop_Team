@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'products.apps.ProductsConfig',
     'userdata.apps.UserdataConfig',
-    'carts.apps.CartsConfig'
+    'carts.apps.CartsConfig',
+    'cart'
 ]
 
 MIDDLEWARE = [
@@ -63,9 +64,14 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.tz',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.static',
                 'django.contrib.messages.context_processors.messages',
+                'cart.context_processor.cart_total_amount',
             ],
         },
     },
@@ -106,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Nairobi'
 
 USE_I18N = True
 
@@ -124,3 +130,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = '/products'
 LOGOUT_REDIRECT_URL = '/login'
 REGISTER_REDIRECT_URL = '/login'
+
+CART_SESSION_ID = 'cart'

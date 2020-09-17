@@ -14,7 +14,6 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.conf.urls import url
 from django.urls import path, include
 from products import views as v1
 from userdata import views as v2
@@ -27,6 +26,6 @@ urlpatterns = [
     path('', include("django.contrib.auth.urls")),
     path('products/', include('products.urls')),
     path('', include('django.contrib.auth.urls')),
-    url(r'^cart/(?P<slug>[\w-]+)/', v3.update_cart, name='update_cart'),
-    path('cart/', v3.view, name='cart')
+    path('cart/', v3.view, name='cart'),
+    path('cart/<slug:slug>/', v3.update_to_cart, name='update_cart')
 ]

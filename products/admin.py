@@ -4,7 +4,17 @@ from .models import Product, Offer, FruitsAndVegetable, Pastrie, Snack, \
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'price', 'stock')
+    date_hierarchy = 'updated'
+    search_fields = ('name', 'category')
+    list_display = ('name', 'price', 'stock', 'category', 'updated')
+    list_editable = ('price', 'stock')
+    list_filter = ('price', 'category')
+    readonly_fields = ('updated', 'timestamp')
+    prepopulated_fields = {'slug': ('name',)}
+    save_as = True
+
+    class Meta:
+        model = Product
 
 
 class OfferAdmin(admin.ModelAdmin):
