@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    body {
+    background-position: 50%;
+    background-size cover;
+    background-image: url('https://p0.pikist.com/photos/84/603/berlin-shopping-leipzig-burst-black-white-architecture.jpg');
+    }
+</style>
 <div class="col-sm-8 col-sm-offset-2">
 {% if empty %}
 
@@ -9,21 +16,21 @@
 {% else %}
 <table class="table">
     <thead>
-    <th>Item</th>
-    <th>Price</th>
-    <th>Qty</th>
+    <th class="text-white">Item</th>
+    <th class="text-white">Price</th>
+    <th class="text-white">Qty</th>
     <th></th>
     </thead>
     <tfoot>
     <tr>
         <td></td>
         <td></td>
-        <td>Total: {{ cart.total }}</td>
+        <td class="text-white">Total: {{ cart.total }}</td>
     </tr>
     </tfoot>
     {%  for item in cart.cartitem_set.all  %}
-    <tr><td>{{ item.product }}</td><td>{{ item.product.price }}</td>
-        <td>{{ item.quantity }}</td><td><a href="{% url 'update_cart' item.product.slug %}?qty=0">Remove</a> </tr>
+    <tr><td class="text-white">{{ item.product }}</td><td class="text-white">{{ item.product.price }}</td>
+        <td class="text-white">{{ item.quantity }}</td><td><a href="{% url 'remove_from_cart' item.id %}" class="btn btn-outline-success my-2 my-sm-0">Remove</a></tr>
     {% endfor  %}
 </table>
 

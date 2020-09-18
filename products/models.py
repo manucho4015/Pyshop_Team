@@ -35,8 +35,11 @@ class Product(models.Model):
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
     active = models.BooleanField(default=True)
 
-    def __unicode__(self):
-        return str(self.name)
+    def __str__(self):
+        try:
+            return self.name
+        except:
+            return str(self.id)
 
     class Meta:
         unique_together = ('name', 'slug')

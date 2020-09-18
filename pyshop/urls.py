@@ -27,5 +27,7 @@ urlpatterns = [
     path('products/', include('products.urls')),
     path('', include('django.contrib.auth.urls')),
     path('cart/', v3.view, name='cart'),
-    path('cart/<slug:slug>/', v3.update_to_cart, name='update_cart')
+    path('cart/<int:remove_id>/', v3.remove_from_cart, name='remove_from_cart'),
+    path('cart/<slug:slug>/', v3.add_to_cart, name='add_to_cart')
+    # path('cart/<int:id>/', v3.remove_from_cart, name='remove_from_cart')
 ]
