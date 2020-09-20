@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'products.apps.ProductsConfig',
     'userdata.apps.UserdataConfig',
     'carts.apps.CartsConfig',
-    'orders.apps.OrdersConfig'
+    'orders.apps.OrdersConfig',
+    'accounts.apps.AccountsConfig'
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,7 @@ LOGOUT_REDIRECT_URL = '/login'
 REGISTER_REDIRECT_URL = '/login'
 
 CART_SESSION_ID = 'cart'
+
+STRIPE_SECRET_KEY = 'sk_test_51HT8VOEtSy0dgQGMZZjnsgu9wq0odKwtHlSbS4pUxo8CxqIDihoRxU94u5UFvOojoa08nadyXFrR6FvjCz5IuHMK001v8gheLP'
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51HT8VOEtSy0dgQGMWmV4AmS3W34iLlyCwNBmAsHHbSv8iOMmOdDQkDl76aL8Tlqfx6aOm1EuxFd7GV0Ta5uYYLJD00E7A84vop'

@@ -18,6 +18,7 @@ from django.urls import path, include
 from products import views as v1
 from userdata import views as v2
 from carts import views as v3
+from orders import views as v4
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,8 +27,10 @@ urlpatterns = [
     path('', include("django.contrib.auth.urls")),
     path('products/', include('products.urls')),
     path('', include('django.contrib.auth.urls')),
-    path('cart/', v3.view, name='cart'),
     path('cart/<int:remove_id>/', v3.remove_from_cart, name='remove_from_cart'),
-    path('cart/<slug:slug>/', v3.add_to_cart, name='add_to_cart')
+    path('cart/<slug:slug>/', v3.add_to_cart, name='add_to_cart'),
+    path('cart/', v3.view, name='cart'),
+    path('checkout/', v4.checkout, name='checkout'),
+    path('orders/', v4.orders, name='user_orders')
     # path('cart/<int:id>/', v3.remove_from_cart, name='remove_from_cart')
 ]

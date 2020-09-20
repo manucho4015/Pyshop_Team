@@ -11,7 +11,7 @@ class CartItem(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False)
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
 
-    def __unicode__(self):
+    def __str__(self):
         try:
             return str(self.cart.id)
         except:
@@ -26,5 +26,5 @@ class Cart(models.Model):
     updated = models.DateTimeField(auto_now_add=False, auto_now=True)
     active = models.BooleanField(default=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return "Cart id: %s" % self.id

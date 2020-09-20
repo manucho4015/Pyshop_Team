@@ -117,7 +117,7 @@ class OtherAdmin(admin.ModelAdmin):
         model = Other
 
 
-admin.site.site_header = 'SOKO APP'
+admin.site.site_header = 'SOKO APP ADMINISTRATION'
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Offer, OfferAdmin)
 admin.site.register(FruitsAndVegetable, FruitsAndVegetablesAdmin)

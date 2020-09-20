@@ -11,7 +11,7 @@
 <div class="col-sm-8 col-sm-offset-2">
 {% if empty %}
 
-<h1 style="text-align:center;">{{ empty_message }}</h1>
+<h1 style="text-align:center; text-color:white;">{{ empty_message }}</h1>
 
 {% else %}
 <table class="table">
@@ -33,7 +33,8 @@
         <td class="text-white">{{ item.quantity }}</td><td><a href="{% url 'remove_from_cart' item.id %}" class="btn btn-outline-success my-2 my-sm-0">Remove</a></tr>
     {% endfor  %}
 </table>
-
+<br/>
+    <a href="{% url 'checkout' %}">Checkout</a>
 {% endif %}
 </div>
 {% endblock %}
