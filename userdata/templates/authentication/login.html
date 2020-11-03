@@ -19,20 +19,11 @@ Login Page
         <div class="row">
             <div class="col-sm-3 offset-sm-3">
                 {{ form|crispy }}
-                <p style="color:white">Don't have an account? Create one <a href="/register">here</a></p>
+                <p style="color:white">Don't have an account? Create one <a href="/registration">here</a></p>
                 <button type="submit" class="btn btn-dark">LOGIN</button>
             </div>
         </div>
     </div>
-    <script>
-        var form_fields = document.getElementByTagName('input')
-        form_fields[1].placeholder = 'Username...';
-        form_fields[2].placeholder = 'Password...';
 
-        for (var field in form_fields){
-            form_fields[field].classroom += 'form-control'
-        }
-
-    </script>
 </form>
 {% endblock %}

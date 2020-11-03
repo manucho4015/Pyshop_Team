@@ -23,7 +23,8 @@ from orders import views as v4
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('products/s/', v1.search, name='search'),
-    path('register/', v2.register, name='register'),
+    path('registration/', v2.register, name='registration'),
+    path('login/', v2.login, name='login'),
     path('', include("django.contrib.auth.urls")),
     path('products/', include('products.urls')),
     path('', include('django.contrib.auth.urls')),
